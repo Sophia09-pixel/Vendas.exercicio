@@ -1,0 +1,90 @@
+#include<stdio.h>
+
+
+int main(){
+	
+    int lojasVendas[3],opcao;
+    char nomeLojas[3]={'b','m','g'};
+    
+    int lojasEstoque[3];
+    int lojasFuncionarios[3];
+    int i,j,aux,auxEstoque,auxFuncionarios;
+    char auxiliarNome;
+    
+    for(i=0;i<3;i++){
+      printf("Digite as vendas de cada loja");
+      scanf("%d",&lojasVendas[i]);	
+	}
+	
+	
+    for(i=0;i<3;i++){
+      printf("Digite o estoque de cada loja");
+      scanf("%d",&lojasEstoque[i]);	
+	}
+	
+	
+    for(i=0;i<3;i++){
+      printf("Digite a quantidade de funcionarios");
+      scanf("%d",&lojasFuncionarios[i]);	
+	}
+      
+	while(opcao != 9){
+	   printf("Digite a opcao desejada:\n(1)Ranking de vendas\n(2)Quantidade de funcionarios\n(3)Loja com mais venda\n(4)Loja com menos vendas\nEscolha:");
+	   scanf("%d",&opcao);	
+	
+	switch(opcao){
+		
+		case 1:
+       
+          for(i=1;i<3;i++){
+          	for(j=0;j<3-1;j++){
+          		if(lojasVendas[j]<lojasVendas[j+1]){
+          		   aux = lojasVendas[j+1];
+				   lojasVendas[j+1]=lojasVendas[j];
+				   lojasVendas[j]=aux;
+				   
+				   auxiliarNome= nomeLojas[j+1];
+				   nomeLojas[j+1]=nomeLojas[j];
+				   nomeLojas[j]=auxiliarNome;
+				   
+				   auxEstoque =  lojasEstoque[j+1];
+				   lojasEstoque[j+1]=lojasEstoque[j];
+				   lojasEstoque[j]=auxEstoque;
+				   
+				   auxFuncionarios = lojasFuncionarios[j+1];
+				   lojasFuncionarios[j+1]=lojasFuncionarios[j];
+				   lojasFuncionarios[j]=auxFuncionarios;
+				   
+				  }
+			  }
+		  }
+		  
+		  for(i=0;i<3;i++){
+		  	printf("Ranking:\nEstado: %c e quantidade: %d\n", nomeLojas[i],lojasVendas[i]);
+		  }
+        break;	
+		
+		case 2:
+		    
+		    for(i=0;i<3;i++){
+		      printf("Estado: %c e quantidade: %d\n",nomeLojas[i],lojasFuncionarios[i]);
+			}
+		
+		break;
+		
+		case 3:
+			  printf("Estado: %c e loja mais venda: %d\n",nomeLojas[0],lojasVendas[0]);
+		break;
+		
+		case 4:
+			 printf("Estado: %c e loja com menos venda: %d\n",nomeLojas[2],lojasVendas[2]);
+			
+		break;
+		
+		default:
+		printf("Opcao errada");	
+	}
+	
+	}
+	return 0;
+}
